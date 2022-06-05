@@ -34,19 +34,69 @@ h1 {
 }
 
 .row > div.green {
-  background: #8AC6C0; 
-  border-color: #009688; 
+  --background: #8AC6C0; 
+  --border-color: #009688; 
+  animation: flip 0.5s ease forwards; 
 
 }
 
 .row > div.grey {
-  background: #B7B7B7; 
-  border-color: #827C7C; 
+  --background: #B7B7B7; 
+  --border-color: #827C7C; 
+  animation: flip 0.5s ease forwards; 
 
 }
 
 .row > div.yellow {
-  background: #FBFDB5; 
-  border-color: #F7FA6F; 
+  --background: #FBFDB5; 
+  --border-color: #F7FA6F; 
+  animation: flip 0.5s ease forwards; 
 
+}
+
+.row > div:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.row > div:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+.row > div:nth-child(4) {
+  animation-delay: 0.6s;
+}
+
+.row > div:nth-child(5) {
+  animation-delay: 0.8s;
+}
+
+/*grid animations*/
+@keyframes flip{
+  0% {
+    transform: rotateX(0);
+    background: #fff;
+    border-color: #333; 
+
+  }
+  45%{
+    transform: rotateX(90deg);
+    background: #fff;
+    border-color: #333; 
+
+  }
+  55%{
+    transform: rotateX(90deg);
+    background: var(--background);
+    border-color: var(--border-color);
+    color: #4E4E4E; 
+
+
+  }
+  100% {
+    transform: rotateX(0);
+    background: var(--background);
+    border-color: var(--border-color);
+    color: #4E4E4E; 
+
+  }
 }
