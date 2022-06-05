@@ -3,16 +3,56 @@ import { useState } from 'react'
 const useWordle = (solution) => {
     const [turn, setTurn] = useState(0)
     const [currentGuess, setCurrentGuess] = useState('')
-    const [guesses, setGuesses] = useState([])
+    const [guesses, setGuesses] = useState([...Array(6)])
     const [history, setHistory] = useState([])
     const [isCorrect, setIsCorrect] = useState(false)
 
+    //coloring letters in grey (wrong letter), green (correct) or yellow (right letter at wrong place)
     const formatGuess = () => {
-        console.log('formatting the guess - ', currentGuess)
+        let solutionArray = [...solution]
+        let formattedGuess = [...currentGuess].map((l) => {
+            return {key: l, color: 'grey '}
+
+        })
+
+        //coloring letters green
+        formattedGuess.forEach((l, i) => {
+            if (solutionArray[i] === l.key) {
+                formattedGuess[i].color = 'green'
+                solutionArray[i] = null
+            }
+        })
+
+        //coloring letters yellow
+        formattedGuess.forEach((l,i) => {
+            if (solutionArray.includes(l.key) && l.color !== 'green') {
+                formattedGuess[i].color = 'yellow'
+                solutionArray[solutionArray.indexOf(l.key)] = null
+            }
+        })
+
+        return formattedGuess
 
     }
 
-    const addNewGuess = () => {
+    const addNewGuess = (formattedGuess) => {
+        if (currentGuess === solution) {
+            setIsCorrect(true)
+        }
+        setGuesses((prevGuesses) => {
+            let newGuesses = [...prevGuesses]
+            newGuesses[turn] = formattedGuess
+            return newGuesses
+
+        })
+        setHistory((prevHistory) => {
+            return [...prevHistory, currentGuess]
+
+        })
+        setTurn((prevTurn) => {
+            return prevTurn + 1
+        })
+        setCurrentGuess('')
 
     }
 
@@ -30,12 +70,14 @@ const useWordle = (solution) => {
 
             }
 
+            
             if(currentGuess.length !==5) {
                 console.log('Word must be 5 chars long')
                 return
 
             }
-            formatGuess()
+            const formatted = formatGuess()
+            addNewGuess(formatted)
         }
         
         if(key === 'Backspace') {
