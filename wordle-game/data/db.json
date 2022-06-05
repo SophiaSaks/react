@@ -1,0 +1,21 @@
+ {
+
+    "solutions": [
+        {"word": "ninja", "id": 1},
+        {"word": "heart", "id": 2},
+        {"word": "smile", "id": 3},
+        {"word": "blame", "id": 4},
+        {"word": "pools", "id": 5},
+        {"word": "bling", "id": 6},
+        {"word": "craze", "id": 7},
+        {"word": "glare", "id": 8},
+        {"word": "coins", "id": 9},
+        {"word": "phone", "id": 10},
+        {"word": "spade", "id": 11},
+        {"word": "relax", "id": 12},
+        {"word": "drive", "id": 13},
+        {"word": "hours", "id": 14},
+        {"word": "clear", "id": 15}
+
+    ]
+ }
