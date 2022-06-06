@@ -1,8 +1,11 @@
 body {
+  background-image: url("assets/backgroundwordle.jpg");
+  background-size: cover;
   text-align: center; 
   font-size: 1em; 
   margin: 0;
   font-family: verdana;
+  
 }
 
 h1 {
@@ -10,7 +13,7 @@ h1 {
   padding: 20px 0; 
   border-bottom: 2px solid #eee; 
   margin: 0 0 30px 0; 
-  color: #333;
+  color: #4E6266;
 }
 
 .row {
@@ -24,25 +27,26 @@ h1 {
   display: block; 
   width: 60px; 
   height: 60px; 
-  border: 1px solid #bbb; 
+  border: 2px solid #4E6266; 
   margin: 4px; 
   text-align: center; 
   line-height: 60px; 
   text-transform: uppercase; 
   font-weight: bold; 
   font-size: 2.5em; 
+  border-radius: 10px; 
 }
 
 .row > div.green {
   --background: #8AC6C0; 
-  --border-color: #009688; 
+  --border-color: #7FA1A7; 
   animation: flip 0.5s ease forwards; 
 
 }
 
 .row > div.grey {
   --background: #B7B7B7; 
-  --border-color: #827C7C; 
+  --border-color: #4E6266; 
   animation: flip 0.5s ease forwards; 
 
 }
@@ -128,7 +132,7 @@ h1 {
 
 .keypad > div.yellow {
   background: #FBFDB5; 
-  color: #fff; 
+  color: ; 
   transition: all 0.3s ease-in;
 }
 
@@ -157,7 +161,7 @@ h1 {
 }
 
 .modal .solution {
-  color: #ff004C; 
+  color: #7FB39E; 
   font-weight: bold; 
   font-size: 0.8em; 
   text-transform: uppercase;
