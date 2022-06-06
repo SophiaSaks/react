@@ -38,47 +38,42 @@ const useWordle = (solution) => {
 
     const addNewGuess = (formattedGuess) => {
         if (currentGuess === solution) {
-            setIsCorrect(true)
+          setIsCorrect(true)
         }
-        setGuesses((prevGuesses) => {
-            let newGuesses = [...prevGuesses]
-            newGuesses[turn] = formattedGuess
-            return newGuesses
-
+        setGuesses(prevGuesses => {
+          let newGuesses = [...prevGuesses]
+          newGuesses[turn] = formattedGuess
+          return newGuesses
         })
-        setHistory((prevHistory) => {
-            return [...prevHistory, currentGuess]
-
+        setHistory(prevHistory => {
+          return [...prevHistory, currentGuess]
         })
-        setTurn((prevTurn) => {
-            return prevTurn + 1
+        setTurn(prevTurn => {
+          return prevTurn + 1
         })
-        setUsedKeys((prevUsedKeys) => {
-            let newKeys = {...prevUsedKeys}
-            formattedGuess.foreach((l) => {
-                const currentColor = newKeys[l.key]
-
-                if(l.color === 'green'){
-                    newKeys[l.key] = 'green'
-                    return 
-                }
-                if (l.color === 'yellow' && currentColor !== 'green') {
-                    newKeys[l.key] = 'yellow'
-                    return
-                }
-
-                if (l.color ==='grey' && currentColor !== 'green' && currentColor !== 'yellow') {
-                    newKeys[l.key] = 'grey'
-                    return
-                }
-            })
-
-            return newKeys
-
+        setUsedKeys(prevUsedKeys => {
+          formattedGuess.forEach(l => {
+            const currentColor = prevUsedKeys[l.key]
+    
+            if (l.color === 'green') {
+              prevUsedKeys[l.key] = 'green'
+              return
+            }
+            if (l.color === 'yellow' && currentColor !== 'green') {
+              prevUsedKeys[l.key] = 'yellow'
+              return
+            }
+            if (l.color === 'grey' && currentColor !== ('green' || 'yellow')) {
+              prevUsedKeys[l.key] = 'grey'
+              return
+            }
+          })
+    
+          return prevUsedKeys
         })
         setCurrentGuess('')
-
-    }
+      }
+    
 
     const handleKeyup = ({key}) => {
         if (key === 'Enter') {
