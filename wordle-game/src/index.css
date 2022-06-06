@@ -70,7 +70,7 @@ h1 {
   animation-delay: 0.8s;
 }
 
-/*grid animations*/
+/*grid animations for flips*/
 @keyframes flip{
   0% {
     transform: rotateX(0);
@@ -97,6 +97,64 @@ h1 {
     background: var(--background);
     border-color: var(--border-color);
     color: #4E4E4E; 
+
+  }
+}
+
+.row.current > div.filled {
+  animation: bounce 0.2s ease-in-out forwards; 
+}
+
+.keypad {
+  max-width: 500px;
+  margin: 20px auto;
+}
+
+.keypad > div {
+  margin: 5px;
+  width: 40px; 
+  height: 50px;
+  background: #eee; 
+  display: inline-block; 
+  border-radius: 6px; 
+  line-height: 50px; 
+}
+
+.keypad > div.green {
+  background: #8AC6C0;
+  color: #fff; 
+  transition: all 0.3s ease-in;
+}
+
+.keypad > div.yellow {
+  background: #FBFDB5; 
+  color: #fff; 
+  transition: all 0.3s ease-in;
+}
+
+.keypad > div.grey {
+  background: #B7B7B7; 
+  color: #fff; 
+  transition: all 0.3s ease-in;
+}
+
+/*grid animations for grid boxes to 'pop'*/
+
+@keyframes bounce {
+  0%{
+    transform: scale(1);
+    border-color: #ddd; 
+
+  }
+  50%{
+    transform: scale(1.2);
+  
+
+  }
+  100%{
+    transform: scale(1);
+    border-color: #ddd; 
+    border-color: #333; 
 
   }
 }
